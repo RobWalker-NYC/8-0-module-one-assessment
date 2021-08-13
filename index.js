@@ -87,7 +87,7 @@ function getAverageIMDBRating(movies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies) {
-   let getMovieRatingObj = {};
+   let getMovieRatingObj = [];
    for (let i = 0; i < movies.length; i++) {
      if (getMovieRatingObj.includes(movies[i].rated)) {
           getMovieRatingObj.push(movies[i].rated);
@@ -112,12 +112,12 @@ function countByRating(movies) {
  */
 function findById(movies, id) {
   let getMovieIMDBIdObj = '';
-   let ImdbCode = '';
-   for (let i = 0; i < movies.length; i++) {
+    for (let i = 0; i < movies.length; i++) {
        if (getMovieIMDBIdObj === movies[i]) {
-           
+         getMovieIMDBIdObj[id];
        }
    }
+   return getMovieIMDBIdObj;
 }
 
 /**
@@ -140,7 +140,9 @@ function findById(movies, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
