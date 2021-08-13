@@ -28,7 +28,13 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+   let movieTitleArr = [];
+   for (let i = 0; i < movies.length; i++) {
+    movieTitleArr.push(movies[i].title);
+   }
+   return movieTitleArr;
+}
 
 /**
  * getHighestMetascore()
@@ -41,7 +47,14 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  let highestMetaSc = 0;
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].metascore > highestMetaSc.metascore);
+      highestMetaSc = Number(movies[i].metascore);
+  }
+  return highestMetaSc;
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +67,13 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  let getAvgRateIMDB = 0;
+  for (let i = 0; i < movies.length; i++) {
+    getAvgRateIMDB += Number(movies[i].imdbRating) / movies.length;
+  }
+  return getAvgRateIMDB;
+}
 
 /**
  * countByRating()
@@ -67,7 +86,15 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+   let getMovieRatingObj = {};
+   for (let i = 0; i < movies.length; i++) {
+     if (getMovieRatingObj.includes(movies[i].rated)) {
+          getMovieRatingObj.push(movies[i].rated);
+     }
+   }
+   return getMovieRatingObj;
+}
 
 /**
  * findById()
@@ -83,7 +110,15 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  let getMovieIMDBIdObj = '';
+   let ImdbCode = '';
+   for (let i = 0; i < movies.length; i++) {
+       if (getMovieIMDBIdObj === movies[i]) {
+           
+       }
+   }
+}
 
 /**
  * filterByGenre()
@@ -142,7 +177,15 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  let movieHighestEarned = movies[0];
+  for (let i = 0; i < movies.length; i++) {
+    if (movies[i].boxOffice > movieHighestEarned.boxOffice) {
+      movieHighestEarned = movies[i].boxOffice;
+      return movies[i].title;
+    }
+  }
+}
 
 // Do not change anything below this line.
 module.exports = {
