@@ -49,11 +49,16 @@ function getAllMovieTitles(movies) {
  */
 function getHighestMetascore(movies) {
   let highestMetaSc = 0;
+  let lastEle = [];
+  let finalEle;
   for (let i = 0; i < movies.length; i++) {
-    if (movies[i].metascore > highestMetaSc.metascore);
+    if (movies[i].metascore > highestMetaSc) {
       highestMetaSc = Number(movies[i].metascore);
+  } 
   }
-  return highestMetaSc;
+  lastEle.push(highestMetaSc);
+  finalEle = lastEle.pop();
+ return finalEle;
 }
 
 /**
@@ -87,10 +92,12 @@ function getAverageIMDBRating(movies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies) {
-   let getMovieRatingObj = [];
+   let getMovieRatingObj = {};
    for (let i = 0; i < movies.length; i++) {
-     if (getMovieRatingObj.includes(movies[i].rated)) {
-          getMovieRatingObj.push(movies[i].rated);
+     if (!getMovieRatingObj[movies[i].rated]) {
+          getMovieRatingObj.[movies[i].rated] = 1;
+     } else {
+         getMovieRatingObj.[movies[i].rated] += 1;
      }
    }
    return getMovieRatingObj;
@@ -111,14 +118,18 @@ function countByRating(movies) {
     };
  */
 function findById(movies, id) {
-  let getMovieIMDBIdObj = '';
+  if (!movies.length) {
+       return null;
+  }
+  // let getMovieIMDBIdObj = [];
     for (let i = 0; i < movies.length; i++) {
-       if (getMovieIMDBIdObj === movies[i]) {
-         getMovieIMDBIdObj[id];
+       if (movies[i].imdbID === id) {
+            return movies[i];
        }
    }
-   return getMovieIMDBIdObj;
+    return null;
 }
+findById(exampleMovies, "tt1979376");
 
 /**
  * filterByGenre()
@@ -180,13 +191,15 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  //> "Incredibles 2"
  */
 function getBiggestBoxOfficeMovie(movies) {
-  let movieHighestEarned = movies[0];
+  let movieHighestEarned = Number(movies[0].boxOffice);
+  let movieHighestEarnedTitle = '';
   for (let i = 0; i < movies.length; i++) {
-    if (movies[i].boxOffice > movieHighestEarned.boxOffice) {
-      movieHighestEarned = movies[i].boxOffice;
-      return movies[i].title;
+    if (Number(movies[i].boxOffice) > movieHighestEarned) {
+      movieHighestEarned = Number(movies[i].boxOffice);
+      movieHighestEarnedTitle = movies[i].boxOffice;
     }
   }
+ return movieHighestEarnedTitle;
 }
 
 // Do not change anything below this line.
